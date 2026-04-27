@@ -20,7 +20,7 @@ RUN cmake -S . -B build -DCMAKE_BUILD_TYPE=Release && cmake --build build
 RUN cp build/libsearch_engine.so .
 
 WORKDIR /repo
-RUN dotnet publish src/IDADRS.API/IDADRS.API.csproj -c Release -o /app/publish --no-restore
+RUN dotnet publish src/IDADRS.API/IDADRS.API.csproj -c Release -o /app/publish 
 
 # ─────── Runtime stage ─────────────────────────────────────────────────────────
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
