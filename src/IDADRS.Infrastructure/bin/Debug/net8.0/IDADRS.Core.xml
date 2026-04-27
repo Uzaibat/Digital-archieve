@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>IDADRS.Core</name>
+    </assembly>
+    <members>
+        <member name="T:IDADRS.Core.Entities.AccessLog">
+            <summary>Audit record for every document interaction.</summary>
+        </member>
+        <member name="P:IDADRS.Core.Entities.AccessLog.ActionType">
+            <summary>One of: Upload | View | Update | Delete | Download.</summary>
+        </member>
+        <member name="T:IDADRS.Core.Entities.Category">
+            <summary>Document classification category.</summary>
+        </member>
+        <member name="T:IDADRS.Core.Entities.Document">
+            <summary>Archived document with metadata and storage path.</summary>
+        </member>
+        <member name="P:IDADRS.Core.Entities.Document.SearchVector">
+            <summary>PostgreSQL GIN tsvector column — auto-generated from Title + Description.</summary>
+        </member>
+        <member name="T:IDADRS.Core.Entities.RefreshToken">
+            <summary>Opaque refresh token — rotated on every use.</summary>
+        </member>
+        <member name="T:IDADRS.Core.Entities.User">
+            <summary>Represents a system user with role-based access.</summary>
+        </member>
+        <member name="P:IDADRS.Core.Entities.User.Username">
+            <summary>Unique display name, max 60 characters.</summary>
+        </member>
+        <member name="P:IDADRS.Core.Entities.User.Email">
+            <summary>Validated e-mail address, unique in the system.</summary>
+        </member>
+        <member name="P:IDADRS.Core.Entities.User.PasswordHash">
+            <summary>BCrypt hash (cost factor 12).</summary>
+        </member>
+        <member name="T:IDADRS.Core.Enums.UserRole">
+            <summary>Application role hierarchy: Admin > Archivist > User.</summary>
+        </member>
+        <member name="T:IDADRS.Core.Interfaces.IRepository`1">
+            <summary>
+            Generic repository — SOLID note: ISP satisfied by keeping this minimal.
+            Specialised repositories add domain-specific methods without polluting this contract.
+            </summary>
+        </member>
+        <member name="T:IDADRS.Core.Interfaces.IUnitOfWork">
+            <summary>
+            Unit-of-Work — coordinates multiple repositories under one DbContext transaction.
+            SOLID note — DIP: callers depend on this interface, not EF Core.
+            </summary>
+        </member>
+    </members>
+</doc>

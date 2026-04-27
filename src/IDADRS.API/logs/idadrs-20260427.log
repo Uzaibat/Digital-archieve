@@ -1,0 +1,76 @@
+2026-04-27 01:38:00.979 +03:00 [WRN] Failed to determine the https port for redirect.
+2026-04-27 01:38:01.140 +03:00 [INF] HTTP GET /health responded 200 in 196.0794 ms
+2026-04-27 01:38:28.956 +03:00 [INF] HTTP GET /swagger responded 301 in 2.0908 ms
+2026-04-27 01:38:29.092 +03:00 [INF] HTTP GET /swagger/index.html responded 200 in 130.9749 ms
+2026-04-27 01:38:29.159 +03:00 [INF] HTTP GET /swagger/swagger-ui-standalone-preset.js responded 200 in 24.3883 ms
+2026-04-27 01:38:29.160 +03:00 [INF] HTTP GET /swagger/swagger-ui-bundle.js responded 200 in 25.3551 ms
+2026-04-27 01:38:29.165 +03:00 [INF] HTTP GET /swagger/swagger-ui.css responded 200 in 36.3797 ms
+2026-04-27 01:38:29.752 +03:00 [INF] HTTP GET /swagger/favicon-32x32.png responded 200 in 0.3602 ms
+2026-04-27 01:38:30.076 +03:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 352.2014 ms
+2026-04-27 03:00:08.293 +03:00 [INF] HTTP OPTIONS /api/auth/register responded 204 in 15.0518 ms
+2026-04-27 03:00:10.772 +03:00 [INF] New user registered: admin_user
+2026-04-27 03:00:10.850 +03:00 [INF] HTTP POST /api/auth/register responded 201 in 2546.8699 ms
+2026-04-27 03:00:27.699 +03:00 [INF] HTTP OPTIONS /api/auth/login responded 204 in 0.2935 ms
+2026-04-27 03:00:27.937 +03:00 [WRN] Failed login attempt for username: admin_useradmin_user
+2026-04-27 03:00:27.944 +03:00 [INF] HTTP POST /api/auth/login responded 401 in 242.3249 ms
+2026-04-27 03:00:43.609 +03:00 [INF] HTTP OPTIONS /api/auth/login responded 204 in 0.1939 ms
+2026-04-27 03:00:44.237 +03:00 [INF] HTTP POST /api/auth/login responded 200 in 624.6903 ms
+2026-04-27 03:00:44.244 +03:00 [INF] HTTP OPTIONS /api/reports/usage responded 204 in 0.1109 ms
+2026-04-27 03:00:44.247 +03:00 [INF] HTTP OPTIONS /api/categories responded 204 in 0.5535 ms
+2026-04-27 03:00:44.353 +03:00 [INF] HTTP GET /api/reports/usage responded 403 in 104.2456 ms
+2026-04-27 03:00:44.532 +03:00 [INF] HTTP GET /api/categories responded 200 in 282.5954 ms
+2026-04-27 03:03:02.333 +03:00 [INF] HTTP OPTIONS /api/auth/register responded 204 in 0.3692 ms
+2026-04-27 03:03:02.970 +03:00 [INF] New user registered: admin
+2026-04-27 03:03:02.972 +03:00 [INF] HTTP POST /api/auth/register responded 201 in 634.0182 ms
+2026-04-27 03:03:20.938 +03:00 [INF] HTTP OPTIONS /api/auth/login responded 204 in 0.2662 ms
+2026-04-27 03:03:21.582 +03:00 [INF] HTTP POST /api/auth/login responded 200 in 638.7048 ms
+2026-04-27 03:03:21.586 +03:00 [INF] HTTP OPTIONS /api/reports/usage responded 204 in 0.0983 ms
+2026-04-27 03:03:21.588 +03:00 [INF] HTTP OPTIONS /api/categories responded 204 in 0.0826 ms
+2026-04-27 03:03:21.593 +03:00 [INF] HTTP GET /api/reports/usage responded 403 in 4.0795 ms
+2026-04-27 03:03:21.595 +03:00 [INF] HTTP GET /api/categories responded 200 in 5.4261 ms
+2026-04-27 03:03:42.233 +03:00 [INF] HTTP OPTIONS /api/documents responded 204 in 0.2525 ms
+2026-04-27 03:03:42.270 +03:00 [WRN] [NativeSearch] search_engine library not found. Falling back to managed implementation. Copy libsearch_engine.so / search_engine.dll next to the application binary to enable native search.
+System.DllNotFoundException: Unable to load DLL 'search_engine' or one of its dependencies: The specified module could not be found. (0x8007007E)
+   at IDADRS.NativeSearch.NativeSearchInterop.BmSearch(String text, Int32 textLen, String pattern, Int32 patternLen)
+   at IDADRS.NativeSearch.NativeSearchService.ProbeNativeLibrary() in C:\Users\USER\Downloads\IDADRS_FULL\IDADRS_FULL\src\IDADRS.NativeSearch\NativeSearchService.cs:line 115
+2026-04-27 03:03:42.359 +03:00 [INF] HTTP GET /api/documents responded 200 in 124.4366 ms
+2026-04-27 03:03:46.215 +03:00 [INF] HTTP OPTIONS /api/categories responded 204 in 0.1802 ms
+2026-04-27 03:03:46.221 +03:00 [INF] HTTP GET /api/categories responded 200 in 4.4783 ms
+2026-04-27 03:03:47.300 +03:00 [INF] HTTP OPTIONS /api/reports/audit responded 204 in 0.2828 ms
+2026-04-27 03:03:47.305 +03:00 [INF] HTTP GET /api/reports/audit responded 403 in 0.9333 ms
+2026-04-27 03:03:48.466 +03:00 [INF] HTTP OPTIONS /api/reports/usage responded 204 in 0.1811 ms
+2026-04-27 03:03:48.469 +03:00 [INF] HTTP GET /api/reports/usage responded 403 in 0.5532 ms
+2026-04-27 03:03:54.457 +03:00 [INF] HTTP OPTIONS /api/documents responded 204 in 0.2170 ms
+2026-04-27 03:03:54.467 +03:00 [INF] HTTP GET /api/documents responded 200 in 6.4804 ms
+2026-04-27 03:04:10.309 +03:00 [INF] HTTP OPTIONS /api/categories responded 204 in 0.3406 ms
+2026-04-27 03:04:10.326 +03:00 [INF] HTTP GET /api/categories responded 200 in 11.2547 ms
+2026-04-27 03:04:12.370 +03:00 [INF] HTTP GET /api/categories responded 200 in 3.3742 ms
+2026-04-27 03:04:20.858 +03:00 [INF] HTTP OPTIONS /api/reports/usage responded 204 in 0.2981 ms
+2026-04-27 03:04:20.862 +03:00 [INF] HTTP GET /api/reports/usage responded 403 in 0.7423 ms
+2026-04-27 03:04:25.847 +03:00 [INF] HTTP OPTIONS /api/categories responded 204 in 0.3997 ms
+2026-04-27 03:04:25.860 +03:00 [INF] HTTP GET /api/categories responded 200 in 8.5184 ms
+2026-04-27 03:04:28.486 +03:00 [INF] HTTP OPTIONS /api/reports/audit responded 204 in 0.1039 ms
+2026-04-27 03:04:28.491 +03:00 [INF] HTTP GET /api/reports/audit responded 403 in 1.1174 ms
+2026-04-27 03:05:10.959 +03:00 [INF] HTTP OPTIONS /api/documents/search responded 204 in 0.0572 ms
+2026-04-27 03:05:11.224 +03:00 [INF] HTTP GET /api/documents/search responded 200 in 261.7708 ms
+2026-04-27 03:05:12.942 +03:00 [INF] HTTP GET /api/documents/search responded 200 in 8.7421 ms
+2026-04-27 03:05:19.206 +03:00 [INF] HTTP OPTIONS /api/reports/usage responded 204 in 0.1724 ms
+2026-04-27 03:05:19.212 +03:00 [INF] HTTP GET /api/reports/usage responded 403 in 1.5085 ms
+2026-04-27 03:11:39.702 +03:00 [INF] HTTP OPTIONS /api/categories responded 204 in 0.4401 ms
+2026-04-27 03:11:39.804 +03:00 [INF] HTTP GET /api/categories responded 200 in 95.8770 ms
+2026-04-27 03:11:41.395 +03:00 [INF] HTTP OPTIONS /api/reports/audit responded 204 in 0.1085 ms
+2026-04-27 03:11:41.400 +03:00 [INF] HTTP GET /api/reports/audit responded 403 in 1.0819 ms
+2026-04-27 03:14:09.756 +03:00 [WRN] Failed login attempt for username: admin
+2026-04-27 03:14:09.757 +03:00 [INF] HTTP POST /api/auth/login responded 401 in 495.0987 ms
+2026-04-27 03:14:25.240 +03:00 [INF] HTTP POST /api/auth/register responded 400 in 9.4240 ms
+2026-04-27 03:14:46.042 +03:00 [INF] HTTP POST /api/auth/register responded 400 in 3.6230 ms
+2026-04-27 03:14:46.584 +03:00 [WRN] Failed login attempt for username: admin
+2026-04-27 03:14:46.584 +03:00 [INF] HTTP POST /api/auth/login responded 401 in 402.5593 ms
+2026-04-27 03:15:08.372 +03:00 [INF] HTTP POST /api/auth/register responded 400 in 3.1872 ms
+2026-04-27 03:15:08.499 +03:00 [WRN] Failed login attempt for username: admin
+2026-04-27 03:15:08.500 +03:00 [INF] HTTP POST /api/auth/login responded 401 in 3.2412 ms
+2026-04-27 03:15:19.864 +03:00 [INF] New user registered: admin
+2026-04-27 03:15:19.866 +03:00 [INF] HTTP POST /api/auth/register responded 201 in 453.9960 ms
+2026-04-27 03:15:48.508 +03:00 [INF] HTTP POST /api/auth/login responded 200 in 475.5154 ms
+2026-04-27 15:28:03.892 +03:00 [WRN] Failed to determine the https port for redirect.
+2026-04-27 15:28:04.078 +03:00 [INF] HTTP HEAD /swagger/index.html responded 404 in 190.3050 ms

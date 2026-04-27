@@ -1,0 +1,55 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: idadrs_postgres
+    environment:
+      POSTGRES_DB:       idadrs
+      POSTGRES_USER:     idadrs_user
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-changeme}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U idadrs_user -d idadrs"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: idadrs_api
+    environment:
+      ConnectionStrings__Default: "Host=postgres;Port=5432;Database=idadrs;Username=idadrs_user;Password=${DB_PASSWORD:-changeme}"
+      Jwt__Secret:                ${JWT_SECRET:-change-me-in-production-32-chars}
+      Jwt__Issuer:                IDADRS
+      Jwt__Audience:              IDADRS-Client
+      Storage__RootPath:          /uploads
+      Storage__HmacSecret:        ${HMAC_SECRET:-change-me-hmac-secret}
+      Storage__BaseUrl:           ${BASE_URL:-http://localhost:8080}
+      ASPNETCORE_ENVIRONMENT:     Production
+    ports:
+      - "8080:8080"
+    volumes:
+      - uploads:/uploads
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    container_name: idadrs_client
+    ports:
+      - "3000:80"
+    depends_on:
+      - api
+
+volumes:
+  pgdata:
+  uploads:

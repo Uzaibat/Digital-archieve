@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="BCrypt.Net-Next"                        Version="4.0.3" />
+    <PackageReference Include="FluentValidation"                       Version="11.9.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions"       Version="8.0.0" />
+    <PackageReference Include="Microsoft.IdentityModel.Tokens"          Version="7.5.2" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt"         Version="7.5.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="../IDADRS.Core/IDADRS.Core.csproj" />
+    <ProjectReference Include="../IDADRS.NativeSearch/IDADRS.NativeSearch.csproj" />
+  </ItemGroup>
+</Project>

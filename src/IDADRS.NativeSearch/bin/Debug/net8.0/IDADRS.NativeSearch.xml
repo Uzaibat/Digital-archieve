@@ -1,0 +1,154 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>IDADRS.NativeSearch</name>
+    </assembly>
+    <members>
+        <member name="T:IDADRS.NativeSearch.INativeSearchService">
+            <summary>
+            Defines the managed contract for native-accelerated document search operations.
+            Implementations may delegate to the native C library or fall back to managed
+            equivalents when the library is unavailable.
+            </summary>
+        </member>
+        <member name="M:IDADRS.NativeSearch.INativeSearchService.BmSearch(System.String,System.String)">
+            <summary>
+            Searches for the first occurrence of <paramref name="pattern"/> in
+            <paramref name="text"/> using a case-insensitive Boyer-Moore-Horspool algorithm.
+            </summary>
+            <param name="text">The haystack string to search within.</param>
+            <param name="pattern">The needle string to find.</param>
+            <returns>
+            Zero-based character index of the first match, or -1 if not found.
+            </returns>
+        </member>
+        <member name="M:IDADRS.NativeSearch.INativeSearchService.ScoreDocument(System.String,System.String)">
+            <summary>
+            Scores <paramref name="document"/> against <paramref name="query"/> using
+            a simplified TF-IDF algorithm.
+            </summary>
+            <param name="query">User search query.</param>
+            <param name="document">Full document text content to score.</param>
+            <returns>Relevance score normalised to [0.0, 1.0].</returns>
+        </member>
+        <member name="P:IDADRS.NativeSearch.INativeSearchService.IsNativeAvailable">
+            <summary>
+            Gets a value indicating whether the native library was loaded successfully.
+            When <see langword="false"/>, all methods use managed fallback implementations.
+            </summary>
+        </member>
+        <member name="T:IDADRS.NativeSearch.NativeSearchInterop">
+            <summary>
+            Raw P/Invoke declarations for the native <c>search_engine</c> shared library.
+            These are internal to the assembly; consumers use <see cref="T:IDADRS.NativeSearch.INativeSearchService"/>.
+            </summary>
+        </member>
+        <member name="M:IDADRS.NativeSearch.NativeSearchInterop.BmSearch(System.String,System.Int32,System.String,System.Int32)">
+            <summary>
+            Boyer-Moore-Horspool substring search (case-insensitive).
+            </summary>
+            <param name="text">Haystack string (ANSI).</param>
+            <param name="textLen">Length in bytes, or -1 to use strlen().</param>
+            <param name="pattern">Needle string (ANSI).</param>
+            <param name="patternLen">Length in bytes, or -1 to use strlen().</param>
+            <returns>Zero-based byte offset of first match, or -1 if not found.</returns>
+        </member>
+        <member name="M:IDADRS.NativeSearch.NativeSearchInterop.ScoreDocument(System.String,System.Int32,System.String,System.Int32)">
+            <summary>
+            Simplified TF-IDF relevance scorer.
+            </summary>
+            <param name="query">User query string (ANSI).</param>
+            <param name="document">Document content (ANSI).</param>
+            <param name="queryLen">Length in bytes, or -1 to use strlen().</param>
+            <param name="docLen">Length in bytes, or -1 to use strlen().</param>
+            <returns>Relevance score in [0.0, 1.0].</returns>
+        </member>
+        <member name="T:IDADRS.NativeSearch.NativeSearchService">
+             <summary>
+             Production implementation of <see cref="T:IDADRS.NativeSearch.INativeSearchService"/>.
+             Delegates to the native <c>search_engine</c> C shared library via P/Invoke.
+            
+             Graceful degradation strategy:
+               • On first call, a probe P/Invoke is attempted.
+               • If <see cref="T:System.DllNotFoundException"/>, <see cref="T:System.EntryPointNotFoundException"/>,
+                 or <see cref="T:System.Runtime.InteropServices.SEHException"/> is caught, <see cref="F:IDADRS.NativeSearch.NativeSearchService._nativeAvailable"/> is set
+                 to <see langword="false"/> and every subsequent call uses the managed fallback.
+               • The fallback is correct but slower:
+                   BmSearch     → <see cref="M:System.String.IndexOf(System.Char)"/> with OrdinalIgnoreCase
+                   ScoreDocument → simple term-frequency counter (no IDF weighting)
+             </summary>
+        </member>
+        <member name="P:IDADRS.NativeSearch.NativeSearchService.IsNativeAvailable">
+            <inheritdoc />
+        </member>
+        <member name="M:IDADRS.NativeSearch.NativeSearchService.#ctor(Microsoft.Extensions.Logging.ILogger{IDADRS.NativeSearch.NativeSearchService})">
+            <summary>
+            Initialises the service and probes for native library availability.
+            </summary>
+            <param name="logger">Optional logger; pass <see langword="null"/> in tests.</param>
+        </member>
+        <member name="M:IDADRS.NativeSearch.NativeSearchService.BmSearch(System.String,System.String)">
+            <inheritdoc />
+            <remarks>
+            Calls the native BMH implementation when available.
+            Falls back to <see cref="M:System.String.IndexOf(System.Char)"/> with
+            <see cref="F:System.StringComparison.OrdinalIgnoreCase"/> otherwise.
+            </remarks>
+        </member>
+        <member name="M:IDADRS.NativeSearch.NativeSearchService.ScoreDocument(System.String,System.String)">
+            <inheritdoc />
+            <remarks>
+            Calls the native TF-IDF scorer when available.
+            The managed fallback counts term occurrences (TF only, no IDF weighting)
+            and normalises by document length as a simple relevance proxy.
+            </remarks>
+        </member>
+        <member name="M:IDADRS.NativeSearch.NativeSearchService.ProbeNativeLibrary">
+            <summary>
+            Performs a cheap test P/Invoke call to detect whether the native library
+            is loadable and the entry points exist.  Returns <see langword="true"/>
+            if the probe succeeds without throwing.
+            </summary>
+        </member>
+        <member name="M:IDADRS.NativeSearch.NativeSearchService.HandleNativeFault(System.Exception,System.String)">
+            <summary>
+            Handles a mid-operation P/Invoke failure: disables native calls for the
+            remainder of the process lifetime and logs a warning.
+            </summary>
+        </member>
+        <member name="M:IDADRS.NativeSearch.NativeSearchService.IsPInvokeException(System.Exception)">
+            <summary>
+            Returns <see langword="true"/> for exceptions that indicate a P/Invoke
+            infrastructure failure rather than a logic error.
+            </summary>
+        </member>
+        <member name="M:IDADRS.NativeSearch.NativeSearchService.ManagedScoreDocument(System.String,System.String)">
+            <summary>
+            Managed TF-only document scorer used when the native library is unavailable.
+            </summary>
+        </member>
+        <member name="T:IDADRS.NativeSearch.ServiceCollectionExtensions">
+            <summary>
+            Extension methods to register the native search service with the DI container.
+            </summary>
+        </member>
+        <member name="M:IDADRS.NativeSearch.ServiceCollectionExtensions.AddNativeSearch(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Registers <see cref="T:IDADRS.NativeSearch.NativeSearchService"/> as a singleton
+            <see cref="T:IDADRS.NativeSearch.INativeSearchService"/> implementation.
+            </summary>
+            <remarks>
+            Registered as singleton because:
+              • The native library probe is done once at startup.
+              • All methods are stateless after the initial probe.
+              • P/Invoke calls are thread-safe in the C implementation.
+            </remarks>
+            <example>
+            <code>
+            // In Program.cs:
+            builder.Services.AddNativeSearch();
+            </code>
+            </example>
+        </member>
+    </members>
+</doc>

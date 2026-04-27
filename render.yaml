@@ -1,0 +1,48 @@
+services:
+  - type: web
+    name: idadrs-api
+    runtime: dotnet
+    rootDir: .
+    buildCommand: dotnet publish src/IDADRS.API/IDADRS.API.csproj -c Release -o out
+    startCommand: dotnet out/IDADRS.API.dll
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: ASPNETCORE_ENVIRONMENT
+        value: Production
+      - key: ASPNETCORE_URLS
+        value: http://0.0.0.0:$PORT
+      - key: ConnectionStrings__Default
+        fromDatabase:
+          name: idadrs-db
+          property: connectionString
+      - key: Jwt__Issuer
+        value: IDADRS
+      - key: Jwt__Audience
+        value: IDADRS-Client
+      - key: Jwt__Secret
+        generateValue: true
+      - key: Storage__RootPath
+        value: /opt/render/project/uploads
+      - key: Storage__HmacSecret
+        generateValue: true
+      - key: Storage__BaseUrl
+        value: https://idadrs-api.onrender.com
+      - key: ALLOWED_ORIGINS
+        value: https://idadrs-client.onrender.com,http://localhost:3000,http://localhost:5173
+
+  - type: static
+    name: idadrs-client
+    rootDir: client
+    buildCommand: ""
+    staticPublishPath: .
+    autoDeploy: true
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+
+databases:
+  - name: idadrs-db
+    databaseName: idadrs
+    user: idadrs_user

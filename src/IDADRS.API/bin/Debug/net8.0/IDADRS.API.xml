@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>IDADRS.API</name>
+    </assembly>
+    <members>
+        <member name="T:IDADRS.API.Controllers.AuthController">
+            <summary>Authentication — login, register, JWT refresh.</summary>
+        </member>
+        <member name="M:IDADRS.API.Controllers.AuthController.Login(IDADRS.Application.DTOs.LoginRequestDto,System.Threading.CancellationToken)">
+            <summary>Authenticate with username + password. Returns JWT access + refresh tokens.</summary>
+        </member>
+        <member name="M:IDADRS.API.Controllers.AuthController.Register(IDADRS.Application.DTOs.RegisterRequestDto,System.Threading.CancellationToken)">
+            <summary>Register a new user account (default role: User).</summary>
+        </member>
+        <member name="M:IDADRS.API.Controllers.AuthController.Refresh(IDADRS.Application.DTOs.RefreshTokenRequestDto,System.Threading.CancellationToken)">
+            <summary>Exchange a valid refresh token for a new access + refresh token pair.</summary>
+        </member>
+        <member name="T:IDADRS.API.Controllers.CategoriesController">
+            <summary>Category management — full CRUD.</summary>
+        </member>
+        <member name="M:IDADRS.API.Controllers.CategoriesController.GetAll(System.Threading.CancellationToken)">
+            <summary>List all categories with document counts.</summary>
+        </member>
+        <member name="M:IDADRS.API.Controllers.CategoriesController.GetById(System.Int32,System.Threading.CancellationToken)">
+            <summary>Get single category.</summary>
+        </member>
+        <member name="M:IDADRS.API.Controllers.CategoriesController.Create(IDADRS.Application.DTOs.CategoryCreateDto,System.Threading.CancellationToken)">
+            <summary>Create category (Archivist+).</summary>
+        </member>
+        <member name="M:IDADRS.API.Controllers.CategoriesController.Update(System.Int32,IDADRS.Application.DTOs.CategoryCreateDto,System.Threading.CancellationToken)">
+            <summary>Update category (Archivist+).</summary>
+        </member>
+        <member name="M:IDADRS.API.Controllers.CategoriesController.Delete(System.Int32,System.Threading.CancellationToken)">
+            <summary>Delete empty category (Admin only).</summary>
+        </member>
+        <member name="T:IDADRS.API.Controllers.DocumentsController">
+            <summary>Document CRUD, multipart upload, signed download URL, and full-text search.</summary>
+        </member>
+        <member name="M:IDADRS.API.Controllers.DocumentsController.GetAll(System.Threading.CancellationToken)">
+            <summary>List all documents.</summary>
+        </member>
+        <member name="M:IDADRS.API.Controllers.DocumentsController.GetById(System.Int32,System.Threading.CancellationToken)">
+            <summary>Get a single document with a 1-hour signed download URL.</summary>
+        </member>
+        <member name="M:IDADRS.API.Controllers.DocumentsController.Create(IDADRS.Application.DTOs.DocumentCreateDto,System.Threading.CancellationToken)">
+            <summary>Upload a new document (multipart/form-data). Max 50 MB. Types: PDF DOCX XLSX PNG JPG.</summary>
+        </member>
+        <member name="M:IDADRS.API.Controllers.DocumentsController.Update(System.Int32,IDADRS.Application.DTOs.DocumentUpdateDto,System.Threading.CancellationToken)">
+            <summary>Update document metadata (title, description, category).</summary>
+        </member>
+        <member name="M:IDADRS.API.Controllers.DocumentsController.Delete(System.Int32,System.Threading.CancellationToken)">
+            <summary>Delete a document and its stored file.</summary>
+        </member>
+        <member name="M:IDADRS.API.Controllers.DocumentsController.Search(System.String,System.Nullable{System.Int32},System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.Int32,System.Int32,System.Threading.CancellationToken)">
+            <summary>Full-text search — PostgreSQL GIN index + native C TF-IDF re-rank.</summary>
+        </member>
+        <member name="M:IDADRS.API.Controllers.DocumentsController.ServeFile(System.String,System.String,System.Int64)">
+            <summary>Serve a file after validating the HMAC-SHA256 signed URL.</summary>
+        </member>
+        <member name="T:IDADRS.API.Controllers.ReportsController">
+            <summary>Usage statistics, audit trail, and file exports.</summary>
+        </member>
+        <member name="M:IDADRS.API.Controllers.ReportsController.Usage(System.Threading.CancellationToken)">
+            <summary>Aggregate usage stats (doc count, categories, users, access events).</summary>
+        </member>
+        <member name="M:IDADRS.API.Controllers.ReportsController.Audit(System.Int32,System.Int32,System.Threading.CancellationToken)">
+            <summary>Paginated audit log of all access events.</summary>
+        </member>
+        <member name="M:IDADRS.API.Controllers.ReportsController.ExportPdf(System.Threading.CancellationToken)">
+            <summary>Export report as PDF text (Admin only).</summary>
+        </member>
+        <member name="M:IDADRS.API.Controllers.ReportsController.ExportExcel(System.Threading.CancellationToken)">
+            <summary>Export report as CSV (Admin only).</summary>
+        </member>
+        <member name="T:IDADRS.API.Controllers.UsersController">
+            <summary>User management — Admin only.</summary>
+        </member>
+        <member name="M:IDADRS.API.Controllers.UsersController.GetAll(System.Threading.CancellationToken)">
+            <summary>List all registered users.</summary>
+        </member>
+        <member name="M:IDADRS.API.Controllers.UsersController.GetById(System.Int32,System.Threading.CancellationToken)">
+            <summary>Get user by ID.</summary>
+        </member>
+        <member name="M:IDADRS.API.Controllers.UsersController.Update(System.Int32,IDADRS.Application.DTOs.UpdateUserDto,System.Threading.CancellationToken)">
+            <summary>Update username, email, or role.</summary>
+        </member>
+        <member name="M:IDADRS.API.Controllers.UsersController.Delete(System.Int32,System.Threading.CancellationToken)">
+            <summary>Permanently delete a user account.</summary>
+        </member>
+        <member name="T:IDADRS.API.Middleware.AccessLogMiddleware">
+            <summary>§5 — Logs every authenticated document request to the access_logs table.</summary>
+        </member>
+    </members>
+</doc>

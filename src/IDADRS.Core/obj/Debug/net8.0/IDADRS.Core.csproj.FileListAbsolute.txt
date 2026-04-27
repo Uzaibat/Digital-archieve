@@ -1,0 +1,14 @@
+C:\Users\USER\Downloads\IDADRS_FULL\IDADRS_FULL\src\IDADRS.Core\obj\Debug\net8.0\IDADRS.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\USER\Downloads\IDADRS_FULL\IDADRS_FULL\src\IDADRS.Core\obj\Debug\net8.0\IDADRS.Core.AssemblyInfoInputs.cache
+C:\Users\USER\Downloads\IDADRS_FULL\IDADRS_FULL\src\IDADRS.Core\obj\Debug\net8.0\IDADRS.Core.AssemblyInfo.cs
+C:\Users\USER\Downloads\IDADRS_FULL\IDADRS_FULL\src\IDADRS.Core\obj\Debug\net8.0\IDADRS.Core.csproj.CoreCompileInputs.cache
+C:\Users\USER\Downloads\IDADRS_FULL\IDADRS_FULL\src\IDADRS.Core\bin\Debug\net8.0\IDADRS.Core.deps.json
+C:\Users\USER\Downloads\IDADRS_FULL\IDADRS_FULL\src\IDADRS.Core\bin\Debug\net8.0\IDADRS.Core.dll
+C:\Users\USER\Downloads\IDADRS_FULL\IDADRS_FULL\src\IDADRS.Core\bin\Debug\net8.0\IDADRS.Core.pdb
+C:\Users\USER\Downloads\IDADRS_FULL\IDADRS_FULL\src\IDADRS.Core\bin\Debug\net8.0\IDADRS.Core.xml
+C:\Users\USER\Downloads\IDADRS_FULL\IDADRS_FULL\src\IDADRS.Core\obj\Debug\net8.0\IDADRS.Core.csproj.AssemblyReference.cache
+C:\Users\USER\Downloads\IDADRS_FULL\IDADRS_FULL\src\IDADRS.Core\obj\Debug\net8.0\IDADRS.Core.dll
+C:\Users\USER\Downloads\IDADRS_FULL\IDADRS_FULL\src\IDADRS.Core\obj\Debug\net8.0\refint\IDADRS.Core.dll
+C:\Users\USER\Downloads\IDADRS_FULL\IDADRS_FULL\src\IDADRS.Core\obj\Debug\net8.0\IDADRS.Core.xml
+C:\Users\USER\Downloads\IDADRS_FULL\IDADRS_FULL\src\IDADRS.Core\obj\Debug\net8.0\IDADRS.Core.pdb
+C:\Users\USER\Downloads\IDADRS_FULL\IDADRS_FULL\src\IDADRS.Core\obj\Debug\net8.0\ref\IDADRS.Core.dll

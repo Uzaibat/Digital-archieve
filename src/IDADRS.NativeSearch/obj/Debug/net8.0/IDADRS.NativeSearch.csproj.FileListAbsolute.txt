@@ -1,0 +1,14 @@
+C:\Users\USER\Downloads\IDADRS_FULL\IDADRS_FULL\src\IDADRS.NativeSearch\bin\Debug\net8.0\IDADRS.NativeSearch.deps.json
+C:\Users\USER\Downloads\IDADRS_FULL\IDADRS_FULL\src\IDADRS.NativeSearch\bin\Debug\net8.0\IDADRS.NativeSearch.dll
+C:\Users\USER\Downloads\IDADRS_FULL\IDADRS_FULL\src\IDADRS.NativeSearch\bin\Debug\net8.0\IDADRS.NativeSearch.pdb
+C:\Users\USER\Downloads\IDADRS_FULL\IDADRS_FULL\src\IDADRS.NativeSearch\bin\Debug\net8.0\IDADRS.NativeSearch.xml
+C:\Users\USER\Downloads\IDADRS_FULL\IDADRS_FULL\src\IDADRS.NativeSearch\obj\Debug\net8.0\IDADRS.NativeSearch.csproj.AssemblyReference.cache
+C:\Users\USER\Downloads\IDADRS_FULL\IDADRS_FULL\src\IDADRS.NativeSearch\obj\Debug\net8.0\IDADRS.NativeSearch.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\USER\Downloads\IDADRS_FULL\IDADRS_FULL\src\IDADRS.NativeSearch\obj\Debug\net8.0\IDADRS.NativeSearch.AssemblyInfoInputs.cache
+C:\Users\USER\Downloads\IDADRS_FULL\IDADRS_FULL\src\IDADRS.NativeSearch\obj\Debug\net8.0\IDADRS.NativeSearch.AssemblyInfo.cs
+C:\Users\USER\Downloads\IDADRS_FULL\IDADRS_FULL\src\IDADRS.NativeSearch\obj\Debug\net8.0\IDADRS.NativeSearch.csproj.CoreCompileInputs.cache
+C:\Users\USER\Downloads\IDADRS_FULL\IDADRS_FULL\src\IDADRS.NativeSearch\obj\Debug\net8.0\IDADRS.NativeSearch.dll
+C:\Users\USER\Downloads\IDADRS_FULL\IDADRS_FULL\src\IDADRS.NativeSearch\obj\Debug\net8.0\refint\IDADRS.NativeSearch.dll
+C:\Users\USER\Downloads\IDADRS_FULL\IDADRS_FULL\src\IDADRS.NativeSearch\obj\Debug\net8.0\IDADRS.NativeSearch.xml
+C:\Users\USER\Downloads\IDADRS_FULL\IDADRS_FULL\src\IDADRS.NativeSearch\obj\Debug\net8.0\IDADRS.NativeSearch.pdb
+C:\Users\USER\Downloads\IDADRS_FULL\IDADRS_FULL\src\IDADRS.NativeSearch\obj\Debug\net8.0\ref\IDADRS.NativeSearch.dll

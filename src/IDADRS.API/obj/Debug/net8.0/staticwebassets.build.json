@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "4ddCrVJC5XkDdyW/7rjAU1VsipLiRFzbhr4zfjtWhDo=",
+  "Source": "IDADRS.API",
+  "BasePath": "_content/IDADRS.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

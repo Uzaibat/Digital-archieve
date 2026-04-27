@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>IDADRS.Application</name>
+    </assembly>
+    <members>
+        <member name="T:IDADRS.Application.DTOs.ApiResponse`1">
+            <summary>Uniform API envelope returned by every controller action.</summary>
+        </member>
+        <member name="T:IDADRS.Application.DTOs.ApiResponse">
+            <summary>Non-generic convenience overload for void responses.</summary>
+        </member>
+        <member name="M:IDADRS.Application.Interfaces.IFileStorageService.SaveAsync(Microsoft.AspNetCore.Http.IFormFile,System.Threading.CancellationToken)">
+            <summary>Saves the file and returns the relative storage path.</summary>
+        </member>
+        <member name="M:IDADRS.Application.Interfaces.IFileStorageService.DeleteAsync(System.String,System.Threading.CancellationToken)">
+            <summary>Deletes a file by its relative storage path.</summary>
+        </member>
+        <member name="M:IDADRS.Application.Interfaces.IFileStorageService.GenerateSignedUrl(System.String)">
+            <summary>Returns a signed HMAC-SHA256 URL valid for 1 hour.</summary>
+        </member>
+        <member name="M:IDADRS.Application.Interfaces.IFileStorageService.ValidateSignedUrl(System.String,System.String,System.Int64)">
+            <summary>Validates that a signed URL is still valid and untampered.</summary>
+        </member>
+        <member name="M:IDADRS.Application.Interfaces.IJwtService.GenerateAccessToken(IDADRS.Core.Entities.User)">
+            <summary>Generates a short-lived access token (15 min).</summary>
+        </member>
+        <member name="M:IDADRS.Application.Interfaces.IJwtService.GenerateRefreshToken">
+            <summary>Generates a long-lived opaque refresh token (7 days).</summary>
+        </member>
+        <member name="M:IDADRS.Application.Interfaces.IJwtService.AccessTokenExpiry">
+            <summary>Returns the expiry DateTime for a new access token.</summary>
+        </member>
+        <member name="M:IDADRS.Application.Interfaces.IJwtService.RefreshTokenExpiry">
+            <summary>Returns the expiry DateTime for a new refresh token.</summary>
+        </member>
+        <member name="M:IDADRS.Application.Interfaces.IJwtService.GetUsernameFromToken(System.String)">
+            <summary>Extracts the username from a token without validating signature.</summary>
+        </member>
+        <member name="T:IDADRS.Application.Services.AuthService">
+             <summary>
+             Handles registration, login, and JWT refresh token rotation.
+             BCrypt cost factor: 12 (matches §5 requirement).
+            
+             SOLID note — SRP: this class only manages auth flow.
+             JWT generation is delegated to IJwtService (DIP).
+             </summary>
+        </member>
+        <member name="T:IDADRS.Application.Services.FileStorageService">
+            <summary>
+            §8 File Storage — saves uploads to /uploads/{year}/{month}/{guid}.{ext},
+            validates MIME type + size, and generates HMAC-SHA256 signed download URLs.
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:IDADRS.Application.Services.FileStorageService.GenerateSignedUrl(System.String)" -->
+        <member name="M:IDADRS.Application.Services.FileStorageService.ValidateSignedUrl(System.String,System.String,System.Int64)">
+            <inheritdoc />
+        </member>
+        <member name="T:IDADRS.Application.Services.JwtService">
+            <summary>
+            Generates and validates JWT access tokens + opaque refresh tokens.
+            Access token lifetime : 15 minutes.
+            Refresh token lifetime: 7 days.
+            </summary>
+        </member>
+        <member name="M:IDADRS.Application.Services.JwtService.GenerateAccessToken(IDADRS.Core.Entities.User)">
+            <inheritdoc />
+        </member>
+        <member name="M:IDADRS.Application.Services.JwtService.GenerateRefreshToken">
+            <inheritdoc />
+        </member>
+        <member name="M:IDADRS.Application.Services.JwtService.AccessTokenExpiry">
+            <inheritdoc />
+        </member>
+        <member name="M:IDADRS.Application.Services.JwtService.RefreshTokenExpiry">
+            <inheritdoc />
+        </member>
+        <member name="M:IDADRS.Application.Services.JwtService.GetUsernameFromToken(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:IDADRS.Application.Services.ReportService">
+            <summary>
+            Produces usage stats, audit log, and CSV-based PDF/Excel exports.
+            PDF: lightweight HTML→text via StringBuilder (swap QuestPDF for production).
+            Excel: RFC-4180 CSV (swap ClosedXML for production column types).
+            </summary>
+        </member>
+    </members>
+</doc>
